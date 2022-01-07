@@ -13,10 +13,12 @@
 
 <body>
   <div class="w3-bar w3-large w3-theme">
-    <a href="#" class="w3-bar-item ">Home</a>
+    <a href="#" class="w3-bar-item" style="text-decoration: none;">Quick Snippets</a>
+    <!-- <a href="#" class="w3-bar-item" style="text-decoration: none;">Home</a> -->
   </div>
   <div class="w3-container">
-
+    {% block content %}
+    {% endblock content %}
   </div>
   </div>
 </body>
