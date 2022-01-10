@@ -2,7 +2,14 @@ from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from datetime import datetime as dt
 import os
+import ssl
 import bson
+
+try:
+  import dotenv
+  dotenv.load_dotenv('.env')
+except ModuleNotFoundError:
+  pass
 
 app = Flask(__name__)
 
@@ -22,6 +29,7 @@ def snippet():
   snip = snippets.find_one({'_id':bson.ObjectId(snippet_id)})
   return render_template('snippet.html', snippet=snip)
 
+@app.route('/new-snippet')
 @app.route('/add')
 def add_snippet():
   snip = {
