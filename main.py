@@ -26,13 +26,13 @@ def index():
 
 @app.route('/new')
 def new_snippet():
-  return render_template('new_snippet.html')
+  return render_template('new_snippet.html', title='New Snippet')
 
 @app.route("/snippet")
 def snippet():
     snippet_id = request.args["id"]
     snip = snippets.find_one({"_id": bson.ObjectId(snippet_id)})
-    return render_template("snippet.html", snippet=snip)
+    return render_template("snippet.html", snippet=snip, title=snip['title'])
 
 
 @app.route("/add")
