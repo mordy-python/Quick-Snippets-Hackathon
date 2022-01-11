@@ -17,9 +17,9 @@
   <code class="w3-round-large" id='code_copy'>
     {{snippet.code}}
   </code>
-  <button onclick="copy();">Copy</button>
+  <!-- <button onclick="copy();">Copy</button> -->
   <p>{{snippet.explanation |safe}}</p>
-</pre>
+<!-- </pre>
 <script>
   function copy(){
     var text = document.getElementById('code_copy');
@@ -27,5 +27,5 @@
     text.setSelectionRange(0, 99999);
     navigator.clipboard.writeText(text.value);
   }
-</script>
+</script> -->
 {% endblock content %}
