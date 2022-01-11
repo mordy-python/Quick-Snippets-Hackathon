@@ -1,31 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
-<link rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/androidstudio.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/androidstudio.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
 <style>
-  p > code {
+  p>code {
     background-color: #eee;
+    color: #09151b;
     border-radius: 3px;
     font-family: courier, monospace;
     padding: 0 3px;
-}
-</style>
-<h2 class="w3-text-theme w3-center">{{snippet.title}}</h2>
-<pre style="width:fit-content;margin:auto;">
-  <code class="w3-round-large" id='code_copy'>
-    {{snippet.code}}
-  </code>
-  <!-- <button onclick="copy();">Copy</button> -->
-  <p class="nohighlight">{{snippet.explanation |safe}}</p>
-<!-- </pre>
-<script>
-  function copy(){
-    var text = document.getElementById('code_copy');
-    text.select();
-    text.setSelectionRange(0, 99999);
-    navigator.clipboard.writeText(text.value);
   }
-</script> -->
+  .main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+<div class="main-content">
+  <div class="w3-card w3-theme-d5 w3-round-large w3-padding w3-margin-top">
+    <h2 class="w3-center" style="color:#fff;">{{snippet.title}}</h2>
+    <pre>
+    <code class="w3-round-large" id='code_copy'>{{snippet.code}}</code>
+  </pre>
+    {{snippet.explanation |safe}}
+  </div>
+</div>
 {% endblock content %}
