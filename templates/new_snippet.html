@@ -8,20 +8,27 @@
         input {
             outline: none;
         }
+        label, h1 {
+            color: #eaf3f8;
+        }
+        input, textarea {
+            background-color: hsl(200, 50%, 16%);
+            color: #757575;
+        }
     </style>
-    <h1 class="w3-text-theme w3-center">Add a New Snippet</h1>
-    <form class="w3-card w3-padding" style="width: 75%;margin: auto;" action="{{url_for('add_snippet')}}" method="get" autocomplete="off">
-        <label class="w3-text-theme" for="title">Title</label>
-        <input class="w3-input w3-border w3-margin-bottom" type="text" name="title" id="title" required
+    <h1 class="w3-center">Add a New Snippet</h1>
+    <form class="w3-card w3-theme w3-padding" style="width: 75%;margin: auto;" action="{{url_for('add_snippet')}}" method="get" autocomplete="off">
+        <label for="title">Title</label>
+        <input class="w3-input w3-round w3-border-theme w3-border w3-margin-bottom" type="text" name="title" id="title" required
             placeholder="Display output in python">
-        <label class="w3-text-theme" for="short_desc">Short Description</label>
-        <input class="w3-input w3-border w3-margin-bottom" type="text" name="short_desc" id="short_desc" required
+        <label for="short_desc">Short Description</label>
+        <input class="w3-input w3-round w3-border-theme w3-border w3-margin-bottom" type="text" name="short_desc" id="short_desc" required
             placeholder="The print() function displays output to stdout">
-        <label class="w3-text-theme" for="code_block">Snippet Code</label>
-        <textarea name="code_block" id="code_block" rows="5" class="w3-input w3-border w3-margin-bottom" placeholder="print('Place your code here')"></textarea>
-        <label class="w3-text-theme" for="explanation">Code Explanation</label>
-        <textarea name="explanation" id="explanation" rows="5" class="w3-input w3-border" placeholder="The print() function..."></textarea>
-        <input class="w3-margin-top w3-button w3-theme w3-hover-theme" type="submit" value="Share Snippet">
+        <label for="code_block">Snippet Code</label>
+        <textarea spellcheck="false" data-enable-grammarly="false" name="code_block" id="code_block" rows="5" class="w3-input w3-round w3-border-theme w3-border w3-margin-bottom" placeholder="print('Place your code here')"></textarea>
+        <label for="explanation">Code Explanation</label>
+        <textarea spellcheck="false" data-enable-grammarly="false" name="explanation" id="explanation" rows="5" class="w3-input w3-round w3-border-theme w3-border" placeholder="The print() function..."></textarea>
+        <input class="w3-margin-top w3-button w3-theme-action w3-hover-theme" type="submit" value="Share Snippet">
         </div>
     </form>
 {% endblock content %}
