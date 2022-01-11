@@ -5,7 +5,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
 <style>
-  .code {
+  p > code {
     background-color: #eee;
     border-radius: 3px;
     font-family: courier, monospace;
@@ -18,7 +18,7 @@
     {{snippet.code}}
   </code>
   <!-- <button onclick="copy();">Copy</button> -->
-  <p>{{snippet.explanation |safe}}</p>
+  <p class="nohighlight">{{snippet.explanation |safe}}</p>
 <!-- </pre>
 <script>
   function copy(){
