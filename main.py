@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from datetime import datetime as dt
 import os
-import ssl
 import bson
 import markdown
 
@@ -28,7 +27,7 @@ def index():
 @app.route('/new')
 def new_snippet():
   return render_template('new_snippet.html')
-  
+
 @app.route("/snippet")
 def snippet():
     snippet_id = request.args["id"]
