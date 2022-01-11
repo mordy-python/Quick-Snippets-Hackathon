@@ -19,7 +19,7 @@
       {% for snippet in snippets %}
           <li class="w3-card w3-theme w3-round-xlarge">
         <a href="{{url_for('snippet', id=snippet._id)}}" style="text-decoration:none;">
-          <h4 class="w3-theme-d1 w3-padding w3-round-xlarge" style="margin:0;">{{snippet.title}}</h4>
+          <h4 class="w3-theme-d1 w3-padding w3-round-xlarge" style="margin:0;">{{snippet.title | title}}</h4>
           <p class="w3-padding">{{snippet.short_description}}</p>
         </a>
         </li>

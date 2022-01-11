@@ -4,11 +4,19 @@
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/androidstudio.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
+<style>
+  .code {
+    background-color: #eee;
+    border-radius: 3px;
+    font-family: courier, monospace;
+    padding: 0 3px;
+}
+</style>
 <h2 class="w3-text-theme w3-center">{{snippet.title}}</h2>
 <pre style="width:fit-content;margin:auto;">
   <code class="w3-round-large">
     {{snippet.code}}
   </code>
 </pre>
-<p>{{snippet.explanation}}</p>
+<p>{{snippet.explanation |safe}}</p>
 {% endblock content %}

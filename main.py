@@ -4,12 +4,14 @@ from datetime import datetime as dt
 import os
 import ssl
 import bson
+import markdown
 
 try:
-  import dotenv
-  dotenv.load_dotenv('.env')
+    import dotenv
+
+    dotenv.load_dotenv(".env")
 except ModuleNotFoundError:
-  pass
+    pass
 
 app = Flask(__name__)
 
@@ -18,28 +20,34 @@ client = MongoClient(f"mongodb+srv://root:{os.environ['password']}@hackathon-db.
 db = client.snippets
 snippets = db.snippets
 
-@app.route('/')
+@app.route("/")
 def index():
-  snips = snippets.find()
-  return render_template('index.html', title='Home', snippets=snips)
+    snips = snippets.find()
+    return render_template("index.html", title="Home", snippets=snips)
 
-@app.route('/snippet')
+@app.route('/new')
+def new_snippet():
+  return render_template('new_snippet.html')
+  
+@app.route("/snippet")
 def snippet():
-  snippet_id = request.args['id']
-  snip = snippets.find_one({'_id':bson.ObjectId(snippet_id)})
-  return render_template('snippet.html', snippet=snip)
+    snippet_id = request.args["id"]
+    snip = snippets.find_one({"_id": bson.ObjectId(snippet_id)})
+    return render_template("snippet.html", snippet=snip)
 
-@app.route('/new-snippet')
-@app.route('/add')
+
+@app.route("/add")
 def add_snippet():
-  snip = {
-    'title':request.args['title'],
-    'short_description':request.args['short_description'],
-    'explanation':request.args['explanation'],
-    'code':request.args['code'],
-    '_time':dt.today()
-  }
-  snippets.insert_one(snip)
-  return redirect(url_for('index'))
-if __name__ == '__main__':
-  app.run(debug=True, host='0.0.0.0')
+    snip = {
+        "title": request.args["title"],
+        "short_description": request.args["short_desc"],
+        "explanation": markdown.Markdown().convert(request.args["explanation"]),
+        "code": request.args["code_block"],
+        "_time": dt.today()
+    }
+    snippets.insert_one(snip)
+    return redirect(url_for("index"))
+
+
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0")
