@@ -16,7 +16,16 @@
 <pre style="width:fit-content;margin:auto;">
   <code class="w3-round-large">
     {{snippet.code}}
+    <button onclick="copy();">Copy</button>
   </code>
+  <p>{{snippet.explanation |safe}}</p>
 </pre>
-<p>{{snippet.explanation |safe}}</p>
+<script>
+  function copy(){
+    var text = document.getElementById('code_copy');
+    text.select();
+    text.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(text.value);
+  }
+</script>
 {% endblock content %}
