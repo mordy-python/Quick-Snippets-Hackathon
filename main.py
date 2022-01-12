@@ -18,7 +18,7 @@ app = Flask(__name__)
 client = MongoClient(f"mongodb+srv://root:{os.environ['password']}@hackathon-db.rze2u.mongodb.net/Code?retryWrites=true&w=majority")
 db = client.snippets
 snippets = db.snippets
-snippets.create_index(['$**', 'text'])
+snippets.create_index({'$**':'text'})
 @app.route("/")
 def index():
     snips = snippets.find()
