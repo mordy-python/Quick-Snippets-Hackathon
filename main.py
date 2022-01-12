@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from pymongo import MongoClient
+from pymongo import MongoClient, collection
 from datetime import datetime as dt
 import os
 import bson
@@ -18,7 +18,7 @@ app = Flask(__name__)
 client = MongoClient(f"mongodb+srv://root:{os.environ['password']}@hackathon-db.rze2u.mongodb.net/Code?retryWrites=true&w=majority")
 db = client.snippets
 snippets = db.snippets
-
+snippets.create_index(['$**', 'text'])
 @app.route("/")
 def index():
     snips = snippets.find()
@@ -34,6 +34,10 @@ def snippet():
     snip = snippets.find_one({"_id": bson.ObjectId(snippet_id)})
     return render_template("snippet.html", snippet=snip, title=snip['title'])
 
+@app.route('/search')
+def search():
+    query = request.args['query']
+    return render_template('search.html', items=snippets.find({'$text':{'$search':query}}).limit(10))
 
 @app.route("/add")
 def add_snippet():
