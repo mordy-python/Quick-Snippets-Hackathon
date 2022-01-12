@@ -21,7 +21,7 @@ snippets = db.snippets
 
 @app.route("/")
 def index():
-    snips = snippets.find()
+    snips = snippets.find().sort([('_time', -1)])
     return render_template("index.html", title="Home", snippets=snips)
 
 @app.route('/new')
