@@ -10,7 +10,7 @@
 .w3-theme-d5 {color:#fff !important; background-color:#040a0d !important}
 
 .w3-theme-light {color:#000 !important; background-color:#eaf3f8 !important}
-.w3-theme-dark {color:#fff !important; background-color:#040a0d !important}
+.w3-theme-dark {color:#fff !important; background-color:hsl(200, 53%, 10%) !important}
 .w3-theme-action {color:#fff !important; background-color:#040a0d !important}
 
 .w3-theme {color:#fff !important; background-color:#09151b !important}
